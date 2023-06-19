@@ -11,7 +11,6 @@ export class RFExposureCalculator {
         const exposureLimits = this.getExposureLimits(operatingFrequencyInMhz);
         const maxDensity = controlledEnvironment ? exposureLimits.controlled : exposureLimits.uncontrolled;
         const Gf = includeGroundReflectionEffects ? 0.64 : 0.25;
-
         const Pwr = 1000.0 * powerInWatts * modeDutyCycle * this.timeAveragePercent(txDutyCycle.tx, txDutyCycle.rx, controlledEnvironment ? 6 : 30);
         const Eirp = Pwr * Math.pow(10, antennaGainInDbi / 10); // EIRP in milliwatts, adjusting for antenna gain
         const minDistance = (Math.sqrt((Gf * Eirp) / (maxDensity * Math.PI)) / 30.48);
@@ -79,12 +78,12 @@ export class RFExposureCalculator {
         const txCompleteCycles = Math.floor(interval / cycle) * txMinutes; // Total transmit time, in minutes, for complete cycles
 
         if (txMinutes >= interval) {
-            // Edge Case: `txMinutes` is longer than the `interval`. AKA: Transmitting 100% of the time.
+            // `txMinutes` is longer than the `interval`. Transmitting 100% of the time.
             return 1.0;
         }
 
         if (cycle >= interval) {
-            // One full cycle is longer than the interval. AKA: What percent of the interval is spent transmitting?
+            // One full cycle is longer than the interval.
             return (txMinutes / interval);
         }
 
