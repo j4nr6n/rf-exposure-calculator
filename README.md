@@ -1,4 +1,4 @@
-RF Exposure Calculator
+👋 | RF Exposure Calculator
 ----------------------
 
 ```js
