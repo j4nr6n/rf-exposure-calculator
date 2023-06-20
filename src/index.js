@@ -21,43 +21,47 @@ export class RFExposureCalculator {
         };
     }
 
-    getExposureLimits(frequency) {
-        if (frequency < 1.34) {
+    getExposureLimits(frequencyInMhz) {
+        if (frequencyInMhz < 0.3) {
+            throw new Error('The FCC does not have exposure limits below 0.3 MHz')
+        }
+
+        if (frequencyInMhz < 1.34) {
             return {
                 controlled: 100.0,
                 uncontrolled: 100.0
             };
         }
 
-        if (frequency < 3) {
+        if (frequencyInMhz < 3) {
             return {
                 controlled: 100.0,
-                uncontrolled: 180.0 / (Math.pow(frequency, 2))
+                uncontrolled: 180.0 / (Math.pow(frequencyInMhz, 2))
             };
         }
 
-        if (frequency < 30) {
+        if (frequencyInMhz < 30) {
             return {
-                controlled: 900.0 / (Math.pow(frequency, 2)),
-                uncontrolled: 180.0 / (Math.pow(frequency, 2))
+                controlled: 900.0 / (Math.pow(frequencyInMhz, 2)),
+                uncontrolled: 180.0 / (Math.pow(frequencyInMhz, 2))
             };
         }
 
-        if (frequency < 300) {
+        if (frequencyInMhz < 300) {
             return {
                 controlled: 1.0,
                 uncontrolled: 0.2
             };
         }
 
-        if (frequency < 1500) {
+        if (frequencyInMhz < 1500) {
             return {
-                controlled: frequency / 300,
-                uncontrolled: frequency / 1500
+                controlled: frequencyInMhz / 300,
+                uncontrolled: frequencyInMhz / 1500
             };
         }
 
-        if (frequency < 100000) {
+        if (frequencyInMhz <= 100000) {
             return {
                 controlled: 5.0,
                 uncontrolled: 1.0
