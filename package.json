@@ -1,6 +1,6 @@
 {
     "name": "rf-exposure-calculator",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "RF Exposure Calculator for HAM Radio",
     "main": "src/index.js",
     "license": "MIT"

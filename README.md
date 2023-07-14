@@ -8,13 +8,13 @@ const calculator = new RFExposureCalculator();
 
 const results = calculator.calculateRFExposure(
     10,        // Power in Watts
-    1,         // [0-1]: Mode Duty Cycle
+    1.0,         // [0-1]: Mode Duty Cycle
     {          // TX Duty Cycle
-        tx: 2, // Time spent transmitting
-        rx: 3  // Time spent listening
+        tx: 2, // Minutes spent transmitting
+        rx: 3  // Minutes spent listening
     },
     1.3,       // Antenna gain in dBi
-    7.200,     // Operating frequency
+    7.200,     // Operating frequency in MHz
     true,      // `true` for a controlled environment, `false` for uncontrolled
     true       // Whether or not to include the effects of ground reflection
 );

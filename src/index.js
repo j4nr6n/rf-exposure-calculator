@@ -13,7 +13,7 @@ export class RFExposureCalculator {
         const Gf = includeGroundReflectionEffects ? 0.64 : 0.25;
         const Pwr = 1000.0 * powerInWatts * modeDutyCycle * this.timeAveragePercent(txDutyCycle.tx, txDutyCycle.rx, controlledEnvironment ? 6 : 30);
         const Eirp = Pwr * Math.pow(10, antennaGainInDbi / 10); // EIRP in milliwatts, adjusting for antenna gain
-        const minDistance = (Math.sqrt((Gf * Eirp) / (maxDensity * Math.PI)) / 30.48);
+        const minDistance = Math.sqrt((Gf * Eirp) / (maxDensity * Math.PI)) / 30.48;
 
         return {
             'max_allowed_power_density': maxDensity.toFixed(4),
