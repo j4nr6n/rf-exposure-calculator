@@ -8,7 +8,7 @@ const calculator = new RFExposureCalculator();
 
 const results = calculator.calculateRFExposure(
     10,        // Power in Watts
-    1.0,         // [0-1]: Mode Duty Cycle
+    0.4,       // [0-1]: Mode Duty Cycle
     {          // TX Duty Cycle
         tx: 2, // Minutes spent transmitting
         rx: 3  // Minutes spent listening
@@ -23,6 +23,6 @@ const results = calculator.calculateRFExposure(
 ```json
 {
     "max_allowed_power_density": 17.3611,
-    "min_safe_distance_in_feet": 0.2919
+    "min_safe_distance_in_feet": 0.1846
 }
 ```
