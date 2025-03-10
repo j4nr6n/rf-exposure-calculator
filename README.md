@@ -2,7 +2,7 @@
 ----------------------
 
 ```js
-import { RFExposureCalculator } from 'rf-exposure-calculator';
+import RFExposureCalculator from 'rf-exposure-calculator';
 
 const calculator = new RFExposureCalculator();
 

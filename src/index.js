@@ -1,4 +1,4 @@
-export class RFExposureCalculator {
+export default class {
     calculateRFExposure(
         powerInWatts,
         modeDutyCycle,
